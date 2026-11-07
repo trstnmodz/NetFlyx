@@ -1,0 +1,49 @@
+{
+  "name": "AdminMember",
+  "type": "object",
+  "description": "Server-side allowlist of email addresses permitted to use the admin panel.",
+  "properties": {
+    "email": {
+      "type": "string",
+      "description": "Email address authorized for admin access"
+    },
+    "active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Set false to revoke access without deleting the history"
+    },
+    "note": {
+      "type": "string",
+      "description": "Optional note about this administrator"
+    },
+    "added_by": {
+      "type": "string",
+      "description": "Email of the administrator who granted access"
+    }
+  },
+  "required": [
+    "email"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

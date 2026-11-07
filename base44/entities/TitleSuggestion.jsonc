@@ -1,0 +1,76 @@
+{
+  "name": "TitleSuggestion",
+  "type": "object",
+  "description": "A title a signed-in viewer asked the library to add, plus the reviewer's decision.",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Requested movie or series name"
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "Movie",
+        "Series"
+      ],
+      "enumColors": [
+        "blue",
+        "purple"
+      ],
+      "default": "Movie",
+      "description": "Whether the request is for a film or a series"
+    },
+    "details": {
+      "type": "string",
+      "description": "Identifying detail or reason given by the requester"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "rejected"
+      ],
+      "enumColors": [
+        "yellow",
+        "green",
+        "red"
+      ],
+      "default": "pending",
+      "description": "Where the request stands after review"
+    },
+    "decision_note": {
+      "type": "string",
+      "description": "Reviewer's reply shown back to the requester"
+    },
+    "reviewed_by": {
+      "type": "string",
+      "description": "Email of the administrator who decided"
+    },
+    "reviewed_at": {
+      "type": "string",
+      "description": "ISO timestamp of the decision"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "rls": {
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "name": "AdminLog",
+  "type": "object",
+  "description": "Audit trail written server-side for administrator actions.",
+  "properties": {
+    "actor_email": {
+      "type": "string",
+      "description": "Administrator who performed the action"
+    },
+    "actor_id": {
+      "type": "string",
+      "description": "User id of the administrator"
+    },
+    "action": {
+      "type": "string",
+      "description": "Machine-readable action key, for example title.delete"
+    },
+    "entity": {
+      "type": "string",
+      "description": "Entity or area that was touched"
+    },
+    "record_id": {
+      "type": "string",
+      "description": "Identifier of the affected record"
+    },
+    "summary": {
+      "type": "string",
+      "description": "Human-readable description of what changed"
+    },
+    "outcome": {
+      "type": "string",
+      "enum": [
+        "success",
+        "denied",
+        "error"
+      ],
+      "enumColors": [
+        "green",
+        "yellow",
+        "red"
+      ],
+      "default": "success",
+      "description": "Result of the action"
+    }
+  },
+  "required": [
+    "action"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

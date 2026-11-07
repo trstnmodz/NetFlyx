@@ -1,0 +1,31 @@
+{
+  "name": "MyListItem",
+  "type": "object",
+  "properties": {
+    "title_id": {
+      "type": "string",
+      "description": "Library title saved to a profile's list"
+    },
+    "profile_id": {
+      "type": "string",
+      "description": "Local profile that saved it"
+    }
+  },
+  "required": [
+    "title_id"
+  ],
+  "rls": {
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

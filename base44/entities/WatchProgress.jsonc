@@ -1,0 +1,42 @@
+{
+  "name": "WatchProgress",
+  "type": "object",
+  "description": "Where a signed-in viewer stopped watching a title. One record per viewer per title.",
+  "properties": {
+    "title_id": {
+      "type": "string",
+      "description": "Library title being watched"
+    },
+    "position": {
+      "type": "number",
+      "default": 0,
+      "description": "Last playback position in seconds"
+    },
+    "duration": {
+      "type": "number",
+      "default": 0,
+      "description": "Duration of the video in seconds"
+    },
+    "watched_at": {
+      "type": "string",
+      "description": "ISO timestamp of the last playback"
+    }
+  },
+  "required": [
+    "title_id"
+  ],
+  "rls": {
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

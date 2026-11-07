@@ -1,0 +1,118 @@
+{
+  "name": "Title",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Title of the movie or series episode"
+    },
+    "description": {
+      "type": "string",
+      "description": "Short synopsis"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Movies",
+        "Series",
+        "Documentaries",
+        "Animation",
+        "Uncategorized",
+        "Other"
+      ],
+      "enumColors": [
+        "blue",
+        "purple",
+        "green",
+        "pink",
+        "gray",
+        "gray"
+      ],
+      "description": "Library category"
+    },
+    "poster_url": {
+      "type": "string",
+      "description": "Portrait poster image URL"
+    },
+    "backdrop_url": {
+      "type": "string",
+      "description": "Landscape artwork URL used for hero and wide cards"
+    },
+    "dropbox_link": {
+      "type": "string",
+      "description": "Dropbox share link exactly as pasted by the user"
+    },
+    "video_url": {
+      "type": "string",
+      "description": "Converted direct Dropbox playback URL"
+    },
+    "series_name": {
+      "type": "string",
+      "description": "Series group name, when this title is an episode"
+    },
+    "season": {
+      "type": "number",
+      "description": "Season number"
+    },
+    "episode": {
+      "type": "number",
+      "description": "Episode number"
+    },
+    "year": {
+      "type": "number",
+      "description": "Release year"
+    },
+    "runtime": {
+      "type": "number",
+      "description": "Runtime in minutes"
+    },
+    "intro_start": {
+      "type": "number",
+      "description": "Seconds into the video where the intro begins; drives the Skip intro control"
+    },
+    "intro_end": {
+      "type": "number",
+      "description": "Seconds into the video where the intro ends and Skip intro jumps to"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false,
+      "description": "Show in the hero banner"
+    },
+    "last_position": {
+      "type": "number",
+      "default": 0,
+      "description": "Unused legacy field; per-viewer progress lives in WatchProgress"
+    },
+    "last_duration": {
+      "type": "number",
+      "default": 0,
+      "description": "Unused legacy field; per-viewer progress lives in WatchProgress"
+    },
+    "last_watched": {
+      "type": "string",
+      "description": "Unused legacy field; per-viewer progress lives in WatchProgress"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

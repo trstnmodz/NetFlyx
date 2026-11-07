@@ -1,0 +1,76 @@
+{
+  "name": "TvSession",
+  "type": "object",
+  "description": "Short-lived pairing session used to hand a title from a phone to a TV.",
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "Six character pairing code shown on the TV"
+    },
+    "host_secret": {
+      "type": "string",
+      "description": "Random secret only the TV holds; required to read or close the session"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "waiting",
+        "paired",
+        "playing"
+      ],
+      "enumColors": [
+        "gray",
+        "blue",
+        "green"
+      ],
+      "default": "waiting",
+      "description": "Where the handoff currently stands"
+    },
+    "controller_id": {
+      "type": "string",
+      "description": "User id of the phone that paired with this TV"
+    },
+    "controller_name": {
+      "type": "string",
+      "description": "Display name of the paired phone, shown on the TV"
+    },
+    "title_id": {
+      "type": "string",
+      "description": "Title the phone asked the TV to play"
+    },
+    "title_name": {
+      "type": "string",
+      "description": "Name of the requested title, shown on the TV"
+    },
+    "expires_at": {
+      "type": "string",
+      "description": "ISO timestamp after which the session is dead"
+    }
+  },
+  "required": [
+    "code",
+    "host_secret"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

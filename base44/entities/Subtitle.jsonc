@@ -1,0 +1,65 @@
+{
+  "name": "Subtitle",
+  "type": "object",
+  "properties": {
+    "title_id": {
+      "type": "string",
+      "description": "Library title or episode this subtitle belongs to"
+    },
+    "label": {
+      "type": "string",
+      "description": "Track name shown in the player, for example English"
+    },
+    "language": {
+      "type": "string",
+      "description": "Two letter language code, for example en"
+    },
+    "dropbox_link": {
+      "type": "string",
+      "description": "Dropbox share link exactly as pasted"
+    },
+    "url": {
+      "type": "string",
+      "description": "Converted direct Dropbox URL for the subtitle file"
+    },
+    "format": {
+      "type": "string",
+      "enum": [
+        "srt",
+        "vtt"
+      ],
+      "enumColors": [
+        "blue",
+        "green"
+      ],
+      "description": "Original subtitle file format"
+    },
+    "is_default": {
+      "type": "boolean",
+      "default": false,
+      "description": "Auto-select this track when playback starts"
+    }
+  },
+  "required": [
+    "title_id",
+    "url"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
